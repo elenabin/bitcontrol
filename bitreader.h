@@ -41,7 +41,7 @@ protected:
     int32_t ReadBit()
     {
         char szError[BIT_BUFFER_ERROR_LEN] = { 0, };
-        int32_t maxBits = size_ * BIT_BUFFER_ERROR_LEN;
+        int32_t maxBits = size_ * BYTE_BITS_LEN;
         if( readbits_ > maxBits ){
             sprintf(szError, "fail to readbit over max bits! - read(%d) max(%d)\n", readbits_, maxBits);
             fprintf(stderr, szError);
