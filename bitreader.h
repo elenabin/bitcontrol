@@ -1,5 +1,5 @@
-#ifndef _CODEC_BIT_READER_H_
-#define _CODEC_BIT_READER_H_
+#ifndef _BIT_READER_H_
+#define _BIT_READER_H_
 
 #include <stdint.h>
 
