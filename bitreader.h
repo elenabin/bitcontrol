@@ -24,7 +24,7 @@ public:
             fprintf(stderr, szError);
             return ret;
         }
-        if( (read <= 0) || (read > (sizeof(uint32_t)*BYTE_BITS_LEN)) ){
+        if( (read <= 0) || (read > (sizeof(int32_t)*BYTE_BITS_LEN)) ){
             sprintf(szError, "fail to read %d bits. not support over 32bits.\n", read);
             fprintf(stderr, szError);
             return ret;
