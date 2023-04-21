@@ -24,7 +24,7 @@ public:
             fprintf(stderr, szError);
             return ret;
         }
-        if( (read <= 0) || (read > (sizeof(uint32_t)*BIT_BUFFER_DEFAULT_SIZE)) ){
+        if( (read <= 0) || (read > (sizeof(uint32_t)*BYTE_BITS_LEN)) ){
             sprintf(szError, "fail to read %d bits. not support over 32bits.\n", read);
             fprintf(stderr, szError);
             return ret;
@@ -54,7 +54,7 @@ protected:
 
         readbits_++;
 
-        return ( (p[0] >> (BIT_BUFFER_DEFAULT_SIZE - pos)) & 0x01 );
+        return ( (p[0] >> (BYTE_BITS_LEN - pos)) & 0x01 );
     }
 
 private:    
