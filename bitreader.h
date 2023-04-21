@@ -18,7 +18,7 @@ public:
     {
         int32_t ret = 0;
         char szError[BIT_BUFFER_ERROR_LEN] = { 0, };
-        int32_t index = (readbits_ == 0) ? 0: (readbits_ / 8); // change bytes
+        int32_t index = (readbits_ == 0) ? 0: (readbits_ / BYTE_BITS_LEN); // change bytes
         if( (size_ <= 0) || (size_ - index <= 0) ) {
             sprintf(szError, "fail to read bits stream. remain buffer's size is 0 - index(%d) buffer size(%d)\n", index, size_);
             fprintf(stderr, szError);
