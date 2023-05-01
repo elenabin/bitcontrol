@@ -1,11 +1,10 @@
-#ifndef _CODEC_BIT_READER_H_
-#define _CODEC_BIT_READER_H_
+#ifndef _BIT_READER_H_
+#define _BIT_READER_H_
 
 #include <stdint.h>
 
 #define BYTE_BITS_LEN     (8)
 #define BYTE32_BITS_COUNT (32)
-#define BYTE64_BITS_COUNT (64)
 
 #define BIT_BUFFER_ERROR_LEN    (256)
 #define BIT_BUFFER_DEFAULT_SIZE (2048)
