@@ -20,13 +20,6 @@ public:
     CBitWriter(uint8_t* buffer, int32_t size) { data_ = buffer; size_ = size; writebits_ = 0; }
     virtual ~CBitWriter() {}
 
-    /**
-     * @brief       write bits in data_
-     * @param[in]   int32_t write
-     * @param[in]   int32_t value
-     * @return      uint32_t write bits to data_
-     * @note        if value is 0 or 1 is all write writeBits length, over 1, consider as a number, will be write to data_
-     */
     int32_t WriteBits(int32_t write, int32_t value, bool enable = false )
     {
         int32_t ret = 0;
