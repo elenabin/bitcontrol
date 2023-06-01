@@ -3,6 +3,12 @@
 
 #include <stdint.h>
 
+#define READ_BITS16(x) ((*x << 8) | *(x + 1))
+#define READ_BITS24(x) ((*x << 16) | (*(x + 1) << 8) | *(x + 2))
+#define READ_BITS32(x) ((*x << 24) | (*(x + 1) << 16) | (*(x + 2) << 8) | *(x + 3))
+
+#define READ_BITS32_LE(x) ((*x) | (*(x + 1) << 8) | (*(x + 2) << 16) | (*(x + 3) << 24))
+
 #define BYTE_BITS_LEN     (8)
 #define BYTE32_BITS_COUNT (32)
 
@@ -41,6 +47,42 @@ public:
             ret |= ( ReadBit() << (read - (i + 1)) );
         }
         
+        return ret;
+    }
+    
+    // for AVC/h264 SE(v) UE(v)
+    int32_t ReadSignedExpGolombCode()
+    {
+        int32_t ret = 0;
+
+        uint32_t ue = ReadUnsignedExpGolombCode();
+        if( ue & 0x01 == 1 ) // when odd number
+        {
+            ret = (ue + 1) / 2;
+        }
+        else 
+        {
+            ret = -1 * (ue/2);
+        }
+        return ret;
+    }
+
+    uint32_t ReadUnsignedExpGolombCode()
+    {
+        uint32_t ret = 0;
+
+        uint32_t m = 0, b = 0;
+        for(int32_t i = 0; i < ((size_*BIT_READER_BYTE_BITS_LEN) - readbits_); i++)
+        {
+            if(ReadBit() == 1) break;
+            m++;
+        }
+        for(int32_t i = 0; i < m; i++)
+        {
+            b |= (ReadBit() << (m-i-1));
+        }
+        ret = ((1 << m) - 1) + b;
+
         return ret;
     }
 
