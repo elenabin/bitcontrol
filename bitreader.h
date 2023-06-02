@@ -3,12 +3,6 @@
 
 #include <stdint.h>
 
-#define READ_BITS16(x) ((*x << 8) | *(x + 1))
-#define READ_BITS24(x) ((*x << 16) | (*(x + 1) << 8) | *(x + 2))
-#define READ_BITS32(x) ((*x << 24) | (*(x + 1) << 16) | (*(x + 2) << 8) | *(x + 3))
-
-#define READ_BITS32_LE(x) ((*x) | (*(x + 1) << 8) | (*(x + 2) << 16) | (*(x + 3) << 24))
-
 #define BYTE_BITS_LEN     (8)
 #define BYTE32_BITS_COUNT (32)
 
