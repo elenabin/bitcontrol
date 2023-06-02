@@ -1,2 +1,9 @@
-# bitreader
-For read bits you want from the buffer(bytes)
+# bitcontrol
+For control bit as you want from the buffer(bytes)  
+===================================================
+
+##bitreader
+
+##bitwriter
+
+##bitio
